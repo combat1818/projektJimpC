@@ -21,9 +21,9 @@ board_t fillBoard(FILE *f)
         exit(0);
     if(w<=0 || h<=0)
         return NULL;
-    board_t p = createBoard(w, h);
-    p->w = w;
-    p->h = h;
+    board_t b = createBoard(w, h);
+    b->w = w;
+    b->h = h;
     int new;
     for (int i = 0; i < h; i++)
     {
@@ -33,12 +33,23 @@ board_t fillBoard(FILE *f)
             {
                 if (new >= 0 && new <= 255)
                 {
-                    p->points[i][j] = new;
+                    b->points[i][j] = new;
                 }else{
                     return NULL;
                 }
             }
         }
     }
-    return p;
+    return b;
+}
+
+void printBoard(board_t b){
+      for (int i = 0; i < b->h; i++)
+    {
+        for (int j = 0; j < b->w; j++)
+        {
+            printf("%d ", b->points[i][j]);
+        }
+        printf("\n");
+    }
 }

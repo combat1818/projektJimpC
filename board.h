@@ -10,3 +10,5 @@ typedef struct
 board_t createBoard(int, int);
 
 board_t fillBoard(FILE *);
+
+void printBoard(board_t);

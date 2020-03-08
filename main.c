@@ -41,13 +41,6 @@ int main(int argc, char **argv)
          printf("%s",usage);
         return -1;
     }
-    for (int i = 0; i < board->h; i++)
-    {
-        for (int j = 0; j < board->w; j++)
-        {
-            printf("%d ", board->points[i][j]);
-        }
-        printf("\n");
-    }
+    printBoard(board);
     return 0;
 }
