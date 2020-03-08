@@ -1,8 +1,9 @@
 #include "pngCreator.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 int main(int argc, char **argv)
 {
-    process_file();
-    write_png_file("out.png");
+    board_t board = createBoard(10, 10);
     return 0;
 }
