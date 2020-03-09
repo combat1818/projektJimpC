@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <getopt.h>
+#include <fcntl.h>
 
 char *usage =
     "\nPrawidłowe użytkowanie programu:\n"
@@ -18,13 +19,17 @@ char *usage =
 int main(int argc, char **argv)
 {
   int opt;
+  int gen;
   char *fname;
-  while ((opt = getopt(argc, argv, "f:")) != -1)
+  while ((opt = getopt(argc, argv, "f:g:")) != -1)
   {
     switch (opt)
     {
     case 'f':
       fname = optarg;
+      break;
+    case 'g':
+      gen = atoi(optarg);
       break;
     default:
       printf("%s", usage);
@@ -45,6 +50,6 @@ int main(int argc, char **argv)
     return -1;
   }
 
-  board_t x = setNewBoard(board, 1);
+  board_t x = setNewBoard(board, gen);
   return 0;
 }
