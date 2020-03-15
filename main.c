@@ -1,8 +1,9 @@
-#include "pngCreator.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <getopt.h>
 #include <fcntl.h>
+#include "board.h"
 
 char *usage =
     "\nPrawidłowe użytkowanie programu:\n"
@@ -50,6 +51,10 @@ int main(int argc, char **argv)
     return -1;
   }
 
+  
+		
+ /* process_file(board, 1000, 1000);   
+  write_png_file("outZ.png", 1000 , 1000);*/
   board_t x = setNewBoard(board, gen);
   return 0;
 }

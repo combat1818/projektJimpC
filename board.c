@@ -1,14 +1,21 @@
 #include "board.h"
+#include "pngCreator.h"
 #include <stdlib.h>
 
 #define L 0
 #define D 255
+char imgN[8]="img1.png";
+
 
 board_t setNewBoard(board_t b, int gen)
 {
     if (gen != 0)
     {
-        board_t newBoard = createBoard(b->w, b->h);
+	imgN[3]=gen + '0'; /* cast inta na chara taki sredni*/
+	process_file(b,1000,1000);
+	write_png_file(imgN,1000,1000);	
+
+	board_t newBoard = createBoard(b->w, b->h);
         for (int i = 0; i < b->h; i++)
         {
             for (int j = 0; j < b->w; j++)
