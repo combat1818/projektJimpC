@@ -3,11 +3,12 @@
 #include <stdio.h>
 #include <getopt.h>
 #include <fcntl.h>
+#include "board.h"
 
 char *usage =
     "\nPrawidłowe użytkowanie programu:\n"
-    "-f - po tej fladze podajemy plik startowy np: ./a->out -f tab->txt \n"
-    "-g - po tej fladze podajemy ilość generacji np: ./a->out -f tab->txt -g 6 \n"
+    "-f - po tej fladze podajemy plik startowy np: ./a.out -f tab.txt \n"
+    "-g - po tej fladze podajemy ilość generacji np: ./a.out -f tab.txt -g 6 \n"
     "Plik tekstowy powinien zawierać: \n"
     "2 liczby całkowite większe od 0 jako reprezentacje szerokości i wysokości obrazka, \n"
     "tabele uporządkowaną liczbami 0 lub 255 jako reprezentacje pikseli na obrazku, np: \n"
@@ -45,7 +46,7 @@ int main(int argc, char **argv)
   board_t board = fillBoard(f);
   if (board == NULL)
   {
-    printf("(BŁĄD PLIKU STARTOWEGO) Brak wymiarów w pliku, bądź nieprawidłowe liczby-> \n");
+    printf("(BŁĄD PLIKU STARTOWEGO) Brak wymiarów w pliku, bądź nieprawidłowe liczby. \n");
     printf("%s", usage);
     return -1;
   }
