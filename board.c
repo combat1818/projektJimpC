@@ -4,20 +4,19 @@
 
 #define L 0
 #define D 255
-char imgN[9]="img1 .png";
-
+char imgN[10] = "img1  .png";
 
 board_t setNewBoard(board_t b, int gen, int n)
 {
     if (gen != 0)
     {
-	imgN[3]=((n-gen+1)/10) + '0';
-	imgN[4]=((n-gen+1)%10) + '0';
+        imgN[3] = ((n - gen + 1) / 100) + '0';
+        imgN[4] = (((n - gen + 1) / 10) % 10) + '0';
+        imgN[5] = ((n - gen + 1) % 10) + '0';
+        process_file(b, b->h, b->w);
+        write_png_file(imgN, b->h, b->w);
 
-	process_file(b,1000,1000);
-	write_png_file(imgN,1000,1000);	
-
-	board_t newBoard = createBoard(b->w, b->h);
+        board_t newBoard = createBoard(b->h, b->w);
         for (int i = 0; i < b->h; i++)
         {
             for (int j = 0; j < b->w; j++)
@@ -188,7 +187,7 @@ board_t setNewBoard(board_t b, int gen, int n)
     return b;
 }
 
-board_t createBoard(int w, int h)
+board_t createBoard(int h, int w)
 {
     board_t board = malloc(sizeof(board_t));
     board->points = calloc(h, sizeof(int *));
@@ -204,11 +203,11 @@ board_t createBoard(int w, int h)
 board_t fillBoard(FILE *f)
 {
     int w, h;
-    if (fscanf(f, "%d%d", &w, &h) != 2)
+    if (fscanf(f, "%d%d", &h, &w) != 2)
         exit(0);
     if (w <= 0 || h <= 0)
         return NULL;
-    board_t b = createBoard(w, h);
+    board_t b = createBoard(h, w);
     b->w = w;
     b->h = h;
     int new;

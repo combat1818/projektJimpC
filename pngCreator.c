@@ -18,7 +18,7 @@ png_infop info_ptr;
 int number_of_passes;
 png_bytep *row_pointers;
 
-void write_png_file(char *file_name, int width, int height)
+void write_png_file(char *file_name, int height, int width)
 {
   FILE *fp = fopen(file_name, "wb");
   if (!fp)
@@ -64,7 +64,7 @@ void write_png_file(char *file_name, int width, int height)
   fclose(fp);
 }
 
-void process_file(board_t board, int width, int height)
+void process_file(board_t board, int height, int width)
 {
   /*width = 200;
   height = 200;*/
@@ -81,7 +81,7 @@ void process_file(board_t board, int width, int height)
     png_byte *row = row_pointers[y];
     for (x = 0; x < width; x++)
     {
-      row[x] = board->points[y][x]==255 ? 255 : 0;
+      row[x] = board->points[y][x] == 255 ? 255 : 0;
       /*printf("Pixel at position [ %d - %d ] has RGBA values: %d\n",
              x, y, row[x]);*/
     }
