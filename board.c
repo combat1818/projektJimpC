@@ -4,14 +4,16 @@
 
 #define L 0
 #define D 255
-char imgN[8]="img1.png";
+char imgN[9]="img1 .png";
 
 
-board_t setNewBoard(board_t b, int gen)
+board_t setNewBoard(board_t b, int gen, int n)
 {
     if (gen != 0)
     {
-	imgN[3]=gen + '0'; /* cast inta na chara taki sredni*/
+	imgN[3]=((n-gen+1)/10) + '0';
+	imgN[4]=((n-gen+1)%10) + '0';
+
 	process_file(b,1000,1000);
 	write_png_file(imgN,1000,1000);	
 
@@ -181,7 +183,7 @@ board_t setNewBoard(board_t b, int gen)
                 counter = 0;
             }
         }
-        return setNewBoard(newBoard, gen - 1);
+        return setNewBoard(newBoard, gen - 1, n);
     }
     return b;
 }

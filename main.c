@@ -55,6 +55,6 @@ int main(int argc, char **argv)
 		
  /* process_file(board, 1000, 1000);   
   write_png_file("outZ.png", 1000 , 1000);*/
-  board_t x = setNewBoard(board, gen);
+  board_t x = setNewBoard(board, gen, gen);
   return 0;
 }

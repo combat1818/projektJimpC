@@ -18,5 +18,5 @@ board_t fillBoard(FILE *);
 
 void printBoard(board_t);
 
-board_t setNewBoard(board_t, int);
+board_t setNewBoard(board_t, int, int);
 #endif
