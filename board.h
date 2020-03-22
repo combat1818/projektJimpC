@@ -1,4 +1,9 @@
+#ifndef BOARD_H
+#define BOARD_H
+
 #include <stdio.h>
+
+
 
 typedef struct
 {
@@ -13,4 +18,5 @@ board_t fillBoard(FILE *);
 
 void printBoard(board_t);
 
-board_t setNewBoard(board_t, int);
+board_t setNewBoard(board_t, int, int);
+#endif

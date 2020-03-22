@@ -1,7 +1,8 @@
 #ifndef PNGCREATOR_H
 #define PNGCREATOR_H
-
-void write_png_file(char *);
-void process_file(void);
+#include "board.h"
+void write_png_file(char *, int , int);
+void process_file(board_t , int , int);
 
 #endif
+

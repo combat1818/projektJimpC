@@ -5,10 +5,11 @@
 #include <stdarg.h>
 #include <png.h>
 #include "pngCreator.h"
+#include "board.h"
 
 int x, y;
 
-int width, height;
+/*int width, height;*/
 png_byte color_type;
 png_byte bit_depth;
 
@@ -17,7 +18,7 @@ png_infop info_ptr;
 int number_of_passes;
 png_bytep *row_pointers;
 
-void write_png_file(char *file_name)
+void write_png_file(char *file_name, int width, int height)
 {
   FILE *fp = fopen(file_name, "wb");
   if (!fp)
@@ -63,10 +64,10 @@ void write_png_file(char *file_name)
   fclose(fp);
 }
 
-void process_file(void)
+void process_file(board_t board, int width, int height)
 {
-  width = 200;
-  height = 200;
+  /*width = 200;
+  height = 200;*/
   bit_depth = 8;
   color_type = PNG_COLOR_TYPE_GRAY;
 
@@ -80,9 +81,9 @@ void process_file(void)
     png_byte *row = row_pointers[y];
     for (x = 0; x < width; x++)
     {
-      row[x] = (y + x) % 2 ? 255 : 0;
-      printf("Pixel at position [ %d - %d ] has RGBA values: %d\n",
-             x, y, row[x]);
+      row[x] = board->points[y][x]==255 ? 255 : 0;
+      /*printf("Pixel at position [ %d - %d ] has RGBA values: %d\n",
+             x, y, row[x]);*/
     }
   }
 }
